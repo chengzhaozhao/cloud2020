@@ -13,6 +13,16 @@
     <module>cloud-consume-order80</module>
       <module>cloud-api-commons</module>
     <module>cloud-eureka-server7001</module>
+      <module>cloud-provider-consul-payment8006</module>
+      <module>cloud-consume-feign-order80</module>
+      <module>cloud-provider-hystrix-payment8001</module>
+      <module>cloud-consumer-feign-hystrix-order80</module>
+      <module>cloud-provider-hystrix-dashboard9001</module>
+    <module>cloud-gateway-gateway9527</module>
+      <module>cloud-config-cnter-3344</module>
+    <module>cloud-config-client-3355</module>
+      <module>cloud-config-client-3366</module>
+    <module>spring-cloud-rabbitmq-provider8801</module>
   </modules>
   <packaging>pom</packaging>
 

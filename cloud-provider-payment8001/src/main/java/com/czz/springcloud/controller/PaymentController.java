@@ -5,10 +5,13 @@ import com.czz.springcloud.entities.Payment;
 import com.czz.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author: create by 我心所向
@@ -21,6 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class PaymentController {
     @Autowired
     private PaymentService paymentService;
+    @Value ("${server.port}")
+    private String serverPort;
+
 
     @PostMapping(value = "/payment/create")
     public CommonResult create(Payment payment){
@@ -44,6 +50,23 @@ public class PaymentController {
             return new CommonResult(444,"查询失败",null);
         }
     }
+
+    @GetMapping(value = "/payment/lb")
+    public String getPaymentLB(){
+        return serverPort;
+
+    }
+
+    @GetMapping(value = "/payment/feign/timeout")
+    public String paymentFeignTimeout(){
+        try {
+            TimeUnit.SECONDS.sleep (3);
+        } catch (InterruptedException e) {
+            e.printStackTrace ();
+        }
+        return serverPort;
+    }
+
 }
 
 
